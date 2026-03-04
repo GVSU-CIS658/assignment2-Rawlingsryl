@@ -66,11 +66,26 @@ function applyCream(input: HTMLInputElement): void {
 }
 
 function applySyrup(input: HTMLInputElement): void {
-  // TODO: implement this function
+  const color = syrups[input.value];
+  const syrupElements = document.getElementsByClassName("syrup");
+  if (syrupElements.length === 0) return;
+
+  const syrupDiv = syrupElements[0] as HTMLDivElement;
+
+  syrupDiv.style.setProperty('--syrup-color', color);
+
 }
 
 function setupSyrupListeners(): void {
-  // TODO: implement this function
+  const syrupElements = document.getElementsByName("syrup");
+
+  for (let i = 0; i < syrupElements.length; i++){
+    let element = syrupElements[i] as HTMLInputElement;
+    element.addEventListener("change", () =>{
+      applySyrup(element);
+    });
+  }
+  
 }
 
 setupSyrupListeners();
@@ -87,7 +102,14 @@ function setupTemperatureListeners(): void {
 setupTemperatureListeners();
 
 function setupBaseListeners(): void {
-  // TODO: implement this function
+  const baseElements = document.getElementsByName("base");
+  
+  for (let i = 0; i < baseElements.length; i++){
+    const element = baseElements[i] as HTMLInputElement;
+    element.addEventListener("Change", ()=>{
+      applyBase(element);
+    });
+  }
 }
 
 setupBaseListeners();
