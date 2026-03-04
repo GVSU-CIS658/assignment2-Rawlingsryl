@@ -84,6 +84,9 @@ function setupSyrupListeners(): void {
     element.addEventListener("change", () =>{
       applySyrup(element);
     });
+    if (element.checked){
+      applySyrup(element);
+    }
   }
   
 }
@@ -91,12 +94,32 @@ function setupSyrupListeners(): void {
 setupSyrupListeners();
 
 function setupCreamListeners(): void {
-  // TODO: implement this function
+  const creamElements = document.getElementsByName("cream");
+  
+  for (let i = 0; i < creamElements.length; i++){
+    let element = creamElements[i] as HTMLInputElement;
+    element.addEventListener("change", ()=>{
+      applyCream(element);
+    });
+        if (element.checked){
+      applyCream(element);
+    }
+  }
 }
 setupCreamListeners();
 
 function setupTemperatureListeners(): void {
-  // TODO: implement this function
+  const tempElements = document.getElementsByName("temperature");
+  
+  for (let i = 0; i < tempElements.length; i++){
+    let element = tempElements[i] as HTMLInputElement;
+    element.addEventListener("change", ()=>{
+      applyTemperature(element);
+    });
+        if (element.checked){
+      applyTemperature(element);
+    }
+  }
 }
 
 setupTemperatureListeners();
@@ -105,11 +128,15 @@ function setupBaseListeners(): void {
   const baseElements = document.getElementsByName("base");
   
   for (let i = 0; i < baseElements.length; i++){
-    const element = baseElements[i] as HTMLInputElement;
-    element.addEventListener("Change", ()=>{
+    let element = baseElements[i] as HTMLInputElement;
+    element.addEventListener("change", ()=>{
       applyBase(element);
     });
+    if (element.checked){
+      applyBase(element);
+    }
   }
+  
 }
 
 setupBaseListeners();
